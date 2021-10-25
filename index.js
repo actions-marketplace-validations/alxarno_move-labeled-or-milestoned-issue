@@ -9,7 +9,7 @@ async function run() {
     const labelName = core.getInput("label-name");
     const milestoneName = core.getInput("milestone-name");
     const ignoreList = core.getInput("columns-to-ignore");
-    const octokit = new github.GitHub(myToken);
+    const octokit = github.getOctokit(myToken);
     const context = github.context;
 
     if(!milestoneName && !labelName){
