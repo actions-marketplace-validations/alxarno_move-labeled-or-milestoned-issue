@@ -82,7 +82,7 @@ async function run() {
 
 async function createNewCard(octokit, columnId, issueOrPrId, objectType){
     console.log(`No card exists for the labeled ${objectType} in the project. Attempting to create a card in column ${columnId}, for the ${objectType} with the corresponding id #${issueOrPrId}`);
-    await octokit.projects.createCard({
+    await octokit.rest.projects.createCard({
         column_id: columnId,
         content_id: issueOrPrId,
         content_type: objectType
@@ -92,7 +92,7 @@ async function createNewCard(octokit, columnId, issueOrPrId, objectType){
 
 async function moveExistingCard(octokit, columnId, cardId){
     console.log(`A card already exists for the issue. Attempting to move card #${cardId} to column #${columnId}`);
-    await octokit.projects.moveCard({
+    await octokit.rest.projects.moveCard({
         card_id: cardId,
         position: "top",
         column_id: columnId
