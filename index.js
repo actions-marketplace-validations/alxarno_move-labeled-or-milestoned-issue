@@ -84,6 +84,7 @@ async function createNewCard(octokit, columnId, issueOrPrId, objectType){
     console.log(`No card exists for the labeled ${objectType} in the project. Attempting to create a card in column ${columnId}, for the ${objectType} with the corresponding id #${issueOrPrId}`);
     await octokit.rest.projects.createCard({
         column_id: columnId,
+        note: "Hello",
         content_id: issueOrPrId,
         content_type: objectType
     });
