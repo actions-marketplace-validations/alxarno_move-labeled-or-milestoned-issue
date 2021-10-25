@@ -1,4 +1,4 @@
-name: 'Move labeled or milestoned issue to a specific project column'
+name: 'Move labeled or milestoned issue to a specific project column by arno'
 description: 'Move an newly created issue or existing issue that has been labeled or milestoned to a specific column in a project'
 branding:
   icon: 'move'  
