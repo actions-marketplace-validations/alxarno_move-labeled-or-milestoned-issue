@@ -1,6 +1,6 @@
 const github = require("@actions/github");
 const core = require("@actions/core");
-const graphql = require("@octokit/graphql");
+const { graphql } = require("@octokit/graphql");
 
 async function run() {
     const myToken = core.getInput("action-token");
@@ -11,6 +11,8 @@ async function run() {
     const ignoreList = core.getInput("columns-to-ignore");
     const octokit = github.getOctokit(myToken);
     const context = github.context;
+    console.log(graphql);
+
 
     if(!milestoneName && !labelName){
         throw new Error("one of label-name and milestone-name must be set");
@@ -197,7 +199,7 @@ async function getOrgInformation(organizationLogin, projectNumber, token){
             loginVariable: organizationLogin,
             projectVariable: projectNumber,
             headers: {
-                authorization: `bearer ${token}`
+                authorization: `token ${token}`
             }
         });
     return response;
@@ -245,7 +247,7 @@ async function getRepoInformation(repositoryOwner, repositoryName, projectNumber
             nameVariable: repositoryName,
             projectVariable: projectNumber,
             headers: {
-                authorization: `bearer ${token}`
+                authorization: `token ${token}`
             }
         });
     return response;
