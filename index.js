@@ -9,11 +9,8 @@ async function run() {
     const labelName = core.getInput("label-name");
     const milestoneName = core.getInput("milestone-name");
     const ignoreList = core.getInput("columns-to-ignore");
-    console.log(`Token - ${myToken}`)
     const octokit = github.getOctokit(myToken);
     const context = github.context;
-    console.log(graphql);
-
 
     if(!milestoneName && !labelName){
         throw new Error("one of label-name and milestone-name must be set");
